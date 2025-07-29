@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;  
+}
+
+/* Codigo de guias *//*
+@media (min-width: 1167px) {
+  :root {
+      --colunas: 12;
+      --largura: 1140px;
+      --offset: 0px;
+      --gutter: 20px;
+      --cor: #00000010;
+  }
+}
+@media (min-width: 768px) and (max-width: 1166px){
+  :root{
+      --colunas: 10;
+      --largura: 85%;
+      --offset: 0%;
+      --gutter: 16px;
+      --cor: #00000010;
+  }
+}
+@media (max-width: 767px){
+  :root{
+      --colunas: 8;
+      --largura: 340px;
+      --offset: 0px;
+      --gutter: 8px;
+      --cor: #00000010;
+  }
+}
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  pointer-events: none;
+  z-index: 1000;
+  min-height: 100vh;
+  width: calc(100% - (2 * var(--offset)));
+  max-width: var(--largura);
+  background-size: calc(100% + var(--gutter)) 100%;
+  background-image: repeating-linear-gradient(to right, var(--cor), var(--cor) calc((100% / var(--colunas)) - var(--gutter)), transparent calc((100% / var(--colunas)) - var(--gutter)), transparent calc(100% / var(--colunas)));
+}*/
+
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;  
+  position: relative;
+  z-index: 0;  
+  min-height: 100vh;
+  background-color: white;  
+  overflow: hidden;
+}
+.contentContainer {
+  flex: 1; 
+  display: flex; 
+  width: 100%;
+  justify-content: center;
+  margin: 20px auto;  
+}
+.topbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px; 
+  position: relative;    
+  user-select: none;
+  overflow: hidden;
+  background-color: #0042adde;
+}
+.topbarBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 0; 
+  opacity: 0.3; 
+}
+.logoContainer, 
+.pageTitle {
+  position: relative;
+  z-index: 1;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 180px; 
+  width: auto;
+  margin-right: 950px;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+}
+.pageTitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: "Montserrat", serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px; 
+  color: white;
+  white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.footer {
+  padding: 20px;
+  background-color: #004ac1;
+  color: white;
+  text-align: center;
+  width: 100%;
+  font-family: "Montserrat", serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px; 
+  user-select: none;
+}
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/* Tablet ------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1166px) {
+.logo {
+  height: 180px; 
+  width: auto;
+  margin-right: 480px;
+}
+}
+
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/* Celular Responsive ---------------------------------------------------------*/
+@media (max-width: 767px){
+.topbarContainer {  
+  height: 50px; 
+}
+.logo {
+  height: 100px;  
+  margin-right: 240px;
+}
+.pageTitle {  
+  left: 62%;  
+  font-size: 14px;
+  line-height: 16px;  
+}
+.footer {    
+  font-size: 16px;
+  line-height: 20px; 
+  width: 90%;   
+}
+}

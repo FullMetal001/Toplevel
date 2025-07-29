@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+.taskTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+.tableHeader {   
+    padding: 15px;
+    text-align: left;
+    background-color: #3b82f6;
+    color: white;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+.mobileList {    
+    display: none;
+}
+.emptyMessage {
+    text-align: center;
+    padding: 20px;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px; 
+    color: #6b7280;
+    font-style: italic;
+}
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/* Tablet ------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1166px) {
+.tableHeader {
+    padding: 10px;
+    font-size: 16px;
+    line-height: 20px;    
+}
+}
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/* Celular Responsive ---------------------------------------------------------*/
+@media (max-width: 767px){
+  .taskTable {    
+    display: none;
+  }
+  .mobileList {    
+    display: block;
+  }
+}
+

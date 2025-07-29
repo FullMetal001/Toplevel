@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.tableRow {    
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px; 
+}
+.tableRow:hover {
+    background-color: #eff2f5;
+}
+.tableCell {
+    padding: 15px;
+    vertical-align: middle;
+}
+.taskName {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    display: inline-block;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    max-width: 350px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.taskName:hover {
+    color: #3b82f6;
+}
+.completed {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+.statusCompleted {
+    color: #10b981;
+    font-weight: 500;
+}
+.statusPending {
+    color: #f59e0b;
+    font-weight: 500;
+}
+.editInput {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+}
+.actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.checkbox {    
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.deleteButton {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 5px;
+}
+.deleteButton:hover {
+    color: #dc2626;
+}
+.mobileTaskItem {
+    display: none;
+}
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/* Tablet ------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1166px) {
+.tableRow {    
+    font-size: 16px;
+    line-height: 20px; 
+}
+.tableCell {
+    padding: 8px;    
+}
+.taskName {     
+    max-width: 120px;
+}
+}
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/* Celular Responsive ---------------------------------------------------------*/
+@media (max-width: 767px){
+.tableRow {
+    display: none;    
+}
+.mobileTaskItem {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.taskDetails {
+    display: flex;
+    flex-direction: column;
+}
+.taskName {
+    display: inline-block;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    max-width: 150px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.taskDate {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;    
+    color: #6b7280;
+    margin-top: 5px;
+}
+.taskmobileContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+}
