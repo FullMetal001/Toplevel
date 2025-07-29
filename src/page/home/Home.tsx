@@ -20,7 +20,10 @@ function Home() {
               className={styles.logo}
             />
           </div>
-          <h1 className={styles.pageTitle}>ADMINISTRADOR DE TAREAS</h1>
+          <div className={styles.pageTitleContainer}>
+            <h2 className={styles.pageTitle}>ADMINISTRADOR</h2>
+            <h1 className={styles.pageTitle2}>DE TAREAS</h1>
+          </div>
         </div>
         <div role="main" id="main-content" className={styles.contentContainer}>
           <TasksView />
