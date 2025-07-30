@@ -1,6 +1,6 @@
 import styles from './TaskForm.module.css';
-import { useState } from 'react';
-
+import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
 
 interface TaskFormProps {
   onAddTask: (title: string) => void;
@@ -8,6 +8,25 @@ interface TaskFormProps {
 
 export const TaskForm = ({ onAddTask }: TaskFormProps) => {
   const [inputValue, setInputValue] = useState('');
+  const addButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!addButtonRef.current) return;
+    
+    gsap.to(addButtonRef.current, {
+      duration: 1.5,
+      scale: 1.02,
+      ease: "power1.inOut",
+      repeat: -1,
+      yoyo: true
+    });
+
+    const button = addButtonRef.current;  
+
+    return () => {
+      gsap.killTweensOf(button);
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +50,7 @@ export const TaskForm = ({ onAddTask }: TaskFormProps) => {
           type="submit"
           className={styles.submitButton}
           disabled={!inputValue.trim()}
+          ref={addButtonRef}
         >
           Agregar
         </button>

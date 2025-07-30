@@ -6,53 +6,6 @@
   padding: 0;  
 }
 
-/* Codigo de guias *//*
-@media (min-width: 1167px) {
-  :root {
-      --colunas: 12;
-      --largura: 1140px;
-      --offset: 0px;
-      --gutter: 20px;
-      --cor: #00000010;
-  }
-}
-@media (min-width: 768px) and (max-width: 1166px){
-  :root{
-      --colunas: 10;
-      --largura: 85%;
-      --offset: 0%;
-      --gutter: 16px;
-      --cor: #00000010;
-  }
-}
-@media (max-width: 767px){
-  :root{
-      --colunas: 8;
-      --largura: 340px;
-      --offset: 0px;
-      --gutter: 8px;
-      --cor: #00000010;
-  }
-}
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
-  pointer-events: none;
-  z-index: 1000;
-  min-height: 100vh;
-  width: calc(100% - (2 * var(--offset)));
-  max-width: var(--largura);
-  background-size: calc(100% + var(--gutter)) 100%;
-  background-image: repeating-linear-gradient(to right, var(--cor), var(--cor) calc((100% / var(--colunas)) - var(--gutter)), transparent calc((100% / var(--colunas)) - var(--gutter)), transparent calc(100% / var(--colunas)));
-}*/
-
-
 .mainContainer {
   display: flex;
   flex-direction: column;  
@@ -100,9 +53,9 @@ body::after {
   align-items: center;
 }
 .logo {
-  height: 180px; 
+  height: 300px; 
   width: auto;
-  margin-right: 950px;
+  margin-right: 900px;
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
 }
 .pageTitleContainer {
@@ -154,14 +107,15 @@ body::after {
 /* Tablet ------------------------------------------------------------- */
 @media (min-width: 768px) and (max-width: 1166px) {
 .logo {
-  height: 180px; 
+  height: 260px; 
   width: auto;
-  margin-right: 480px;
+  margin-right: 430px;
 }
 .pageTitleContainer {
   position: absolute;
-  left: 58%;
+  left: 50%;
   transform: translateX(-50%);
+  margin-left: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,19 +133,23 @@ body::after {
 /* Celular Responsive ---------------------------------------------------------*/
 @media (max-width: 767px){
 .topbarContainer {  
-  height: 50px; 
+  height: 80px; 
 }
 .logo {
-  height: 100px;  
-  margin-right: 240px;
+  height: 120px;  
+  margin-right: 220px;
+}
+.pageTitleContainer {
+  left: 50%;
+  margin-left: 70px;  
 }
 .pageTitle {  
-  font-size: 14px;
+  font-size: 18px;
   line-height: 19px;  
 }
 .pageTitle2 {  
-  font-size: 22px;
-  line-height: 14px; 
+  font-size: 28px;
+  line-height: 20px; 
 }
 .footer {    
   font-size: 16px;
