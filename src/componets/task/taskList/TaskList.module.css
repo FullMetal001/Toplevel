@@ -57,9 +57,9 @@
 @media (max-width: 767px){
   .taskTable {    
     display: none;
-  }
+  }  
   .mobileList {    
     display: block;
-  }
+}
 }
 

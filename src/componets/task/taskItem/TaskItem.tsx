@@ -12,6 +12,7 @@ interface TaskItemProps {
   isEditing: boolean;
   setEditing: () => void;
   cancelEditing: () => void;
+  isMobile?: boolean;
 }
 
 export const TaskItem = ({
@@ -21,7 +22,8 @@ export const TaskItem = ({
   onEdit,
   isEditing,
   setEditing,
-  cancelEditing
+  cancelEditing,
+  isMobile = false
 }: TaskItemProps) => {
   const [editValue, setEditValue] = useState(task.title);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -52,6 +54,92 @@ export const TaskItem = ({
   const formatDate = (date: Date) => {
     return format(date, "EEEE, d 'de' MMMM 'de' y, h:mm a", { locale: es });
   };
+
+   if (isMobile) {
+    return (
+      <>
+        {/*mobile view*/}
+        <tr tabIndex={-1} className={styles.mobileTaskItem}>           
+
+          {/*checkbox*/}      
+          <div className={styles.actions}>
+            <input
+              ref={checkboxRef}
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => onToggle(task.id)}
+              onKeyDown={(e) => {
+                handleKeyDown(e, () => onToggle(task.id));
+                if (e.key === 'Tab' && e.shiftKey && !isEditing) {
+                  e.preventDefault();
+                  document.getElementById(`task-${task.id}-label`)?.focus();
+                }
+              }}
+              className={styles.checkbox}
+              tabIndex={0}
+            />          
+          </div>  
+
+          {/*Nombre y fecha de creación*/}      
+          <div className={styles.taskDetails}>
+            <td role="cell" className={styles.tableCell}>
+              {isEditing ? (
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={editValue}
+                  onChange={(e) => setEditValue(e.target.value)}
+                  onBlur={handleEditSubmit}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleEditSubmit();              
+                  }}
+                  className={styles.editInput}
+                />
+              ) : (
+                <div className={styles.taskmobileContent}>
+                  <span
+                    id={`task-${task.id}-label`}
+                    onClick={setEditing}
+                    className={`${styles.taskName} ${task.completed ? styles.completed : ''}`}
+                    tabIndex={0}
+                    onKeyDown={(e) => handleKeyDown(e, setEditing)}
+                    role="button"
+                  >
+                    {task.title}
+                  </span>
+                  <span className={styles.taskDate}>
+                    Creado: {format(new Date(task.createdAt), "EEEE, d 'de' MMMM 'de' y, h:mm a", { locale: es })}
+                  </span>
+                </div>
+              )}
+            </td> 
+          </div> 
+
+          {/*boton de eliminar*/}    
+          <div className={styles.actions}>
+            <button
+                ref={deleteBtnRef}
+                onClick={() => onDelete(task.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Tab' && !e.shiftKey) {                
+                    return;
+                  }
+                  if (e.key === 'Tab' && e.shiftKey) {
+                    e.preventDefault();
+                    checkboxRef.current?.focus();
+                  }
+                  handleKeyDown(e, () => onDelete(task.id));
+                }}
+                className={styles.deleteButton}
+                tabIndex={0}            
+              >
+                ✕
+              </button>
+          </div>
+        </tr>
+      </>
+    );
+  }
 
   return (
     <>
@@ -139,86 +227,7 @@ export const TaskItem = ({
           </button>
         </div>
       </td>
-    </tr>
-    {/*mobile view*/}
-    <tr tabIndex={-1} className={styles.mobileTaskItem}>           
-
-      {/*checkbox*/}      
-      <div className={styles.actions}>
-        <input
-          ref={checkboxRef}
-          type="checkbox"
-          checked={task.completed}
-          onChange={() => onToggle(task.id)}
-          onKeyDown={(e) => {
-            handleKeyDown(e, () => onToggle(task.id));
-            if (e.key === 'Tab' && e.shiftKey && !isEditing) {
-              e.preventDefault();
-              document.getElementById(`task-${task.id}-label`)?.focus();
-            }
-          }}
-          className={styles.checkbox}
-          tabIndex={0}
-        />          
-      </div>  
-
-      {/*Nombre y fecha de creación*/}      
-      <div className={styles.taskDetails}>
-        <td role="cell" className={styles.tableCell}>
-          {isEditing ? (
-            <input
-              ref={inputRef}
-              type="text"
-              value={editValue}
-              onChange={(e) => setEditValue(e.target.value)}
-              onBlur={handleEditSubmit}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') handleEditSubmit();              
-              }}
-              className={styles.editInput}
-            />
-          ) : (
-            <div className={styles.taskmobileContent}>
-              <span
-                id={`task-${task.id}-label`}
-                onClick={setEditing}
-                className={`${styles.taskName} ${task.completed ? styles.completed : ''}`}
-                tabIndex={0}
-                onKeyDown={(e) => handleKeyDown(e, setEditing)}
-                role="button"
-              >
-                {task.title}
-              </span>
-              <span className={styles.taskDate}>
-                Creado: {format(new Date(task.createdAt), "EEEE, d 'de' MMMM 'de' y, h:mm a", { locale: es })}
-              </span>
-            </div>
-          )}
-        </td> 
-      </div> 
-
-      {/*boton de eliminar*/}    
-      <div className={styles.actions}>
-        <button
-            ref={deleteBtnRef}
-            onClick={() => onDelete(task.id)}
-            onKeyDown={(e) => {
-              if (e.key === 'Tab' && !e.shiftKey) {                
-                return;
-              }
-              if (e.key === 'Tab' && e.shiftKey) {
-                e.preventDefault();
-                checkboxRef.current?.focus();
-              }
-              handleKeyDown(e, () => onDelete(task.id));
-            }}
-            className={styles.deleteButton}
-            tabIndex={0}            
-          >
-            ✕
-          </button>
-      </div>
-    </tr>       
+    </tr>           
     </>
   );
 };
